@@ -1,4 +1,6 @@
-[Y, fs] = audioread('Data/Umer_Running.m4a');
+clc
+clear all
+[Y, fs] = audioread('Data/CW_test_01.m4a');
 c = 3e8; % Speed of light
 fc = 2.424e9; % Carrier frequency
 T = 100e-3; % Pulse length
@@ -9,10 +11,11 @@ Y = Y(:,1);
 len = size(Y,1);
 row = floor(len/N);
 
-caxis([-35 0]);
+caxis_range = -35;
+caxis([caxis_range 0]);
 colorbar;
 set(gca,'XLim',[0 40]);
-set(gca,'YLim',[0 25]);
+set(gca,'YLim',[0 row*T]);
 xlabel('Velocity [m/sec]'); ylabel('Time [sec]');
 
 f = zeros(1, 2*N);
@@ -22,15 +25,13 @@ time = linspace(1, T*row, row);
 hold on
 
 % Visualization of Velocity information
-hImage = imagesc(vel,0,f);
+hImage = imagesc(vel,time,f);
 
-cdata = -35*ones(row, 2*N);
+cdata = caxis_range*ones(row, 2*N);
 itr = 1;
 for i = 1:N:len
     if i+N-1 < len
         data = (Y(i:i+N-1,:))';
-    else
-        data = (Y(i:end,:))';
     end
     % Take mean and reduce ground clutter
     data = data - mean(data);
@@ -46,8 +47,7 @@ for i = 1:N:len
     cdata(itr,:) = f;
     itr = itr + 1;
     % Visualization of Velocity information
-    set(hImage, 'YData', time(1:row));
     set(hImage, 'CData', cdata);
-    pause(0.001);
+    pause(0.1);
 end
 
