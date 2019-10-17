@@ -4,7 +4,7 @@ close all
 clear all
 clc
 
-[y,fs] = audioread('Data/Malvinas.m4a');             % Load audio file
+[y,fs] = audioread('Data/SAR.m4a');             % Load audio file
 
 c = 2.997e8;                                    % Speed of light in air (m/s)
 f_start = 2.4e9;                                % Start Frequency (Hz)
@@ -16,8 +16,8 @@ Trp = 250e-3;                                   % Range profile time duration
 N = fs*Tsample;                                 % Number of samples in each pulse
 Nrp = fs*Trp;
 
-data =-y(:,1);                                  % Backscattered data from radar
-trig =-y(:,2);                                  % Trigger signal from modulator
+data = y(:,1);                                  % Backscattered data from radar
+trig = y(:,2);                                  % Trigger signal from modulator
 
 rpstart = abs(trig) > mean(abs(trig));                        % Set pulse start
 count = 0;
