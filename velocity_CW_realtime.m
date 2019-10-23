@@ -1,6 +1,6 @@
 clc
 clear all
-[Y, fs] = audioread('Data/Umer_Running.m4a');
+[Y, fs] = audioread('Data/sdr_wo_pa.wav');
 c = 3e8; % Speed of light
 fc = 2.424e9; % Carrier frequency
 T = 100e-3; % Pulse length
@@ -48,6 +48,6 @@ for i = 1:N:len
     itr = itr + 1;
     % Visualization of Velocity information
     set(hImage, 'CData', cdata);
-    pause(0.1);
+    pause(0.0001);
 end
 

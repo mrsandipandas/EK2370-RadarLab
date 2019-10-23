@@ -1,5 +1,5 @@
 tic
-[Y, fs] = audioread('Data/Umer_Running.m4a');
+[Y, fs] = audioread('Data/sdr_wo_pa_i.wav');
 c = 3e8; % Speed of light
 fc = 2.424e9; % Carrier frequency
 T = 100e-3; % Pulse length
