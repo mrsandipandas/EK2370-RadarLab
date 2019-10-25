@@ -85,7 +85,7 @@ class top_block(grc_wxgui.top_block_gui):
         )
         self.uhd_usrp_sink_0.set_samp_rate(samp_rate)
         self.uhd_usrp_sink_0.set_center_freq(5800000000, 0)
-        self.uhd_usrp_sink_0.set_gain(34, 0)
+        self.uhd_usrp_sink_0.set_gain(60, 0)
         self.uhd_usrp_sink_0.set_antenna('TX/RX', 0)
         _freq_sizer = wx.BoxSizer(wx.VERTICAL)
         self._freq_text_box = forms.text_box(
@@ -110,7 +110,7 @@ class top_block(grc_wxgui.top_block_gui):
         	proportion=1,
         )
         self.GridAdd(_freq_sizer, 0, 0, 1, 2)
-        self.blocks_wavfile_sink_0 = blocks.wavfile_sink('C:\\Work\\PhD\\Courses\\Radar\\Lab\\Data\\sdr_pa.wav', 1, samp_rate, 16)
+        self.blocks_wavfile_sink_0 = blocks.wavfile_sink('C:\\Work\\PhD\\Courses\\Radar\\Lab\\Data\\sdr_wo_pa.wav', 1, samp_rate, 16)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_complex_to_float_0 = blocks.complex_to_float(1)
         self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_SIN_WAVE, 0, 1, 0)
